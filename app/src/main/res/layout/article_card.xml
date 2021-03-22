@@ -12,6 +12,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/article_card"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:backgroundTint="#F6F6F6"

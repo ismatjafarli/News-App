@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsApp"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.WebActivity">
+
+        </activity>
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/Theme.NewsApp.NoActionBar">
@@ -21,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
