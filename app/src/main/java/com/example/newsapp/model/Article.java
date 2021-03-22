@@ -95,5 +95,6 @@ public class  Article {
                 .load(imageUrl)
                 .into(view);
     }
+    // adadwsd
 
 }
