@@ -88,13 +88,10 @@ public class  Article {
         this.content = content;
     }
 
-
     @BindingAdapter({"bind:imageUrl"})
     public static void loadImage(ImageView view, String imageUrl) {
         Picasso.with(view.getContext())
                 .load(imageUrl)
                 .into(view);
     }
-    // adadwsd
-
 }
