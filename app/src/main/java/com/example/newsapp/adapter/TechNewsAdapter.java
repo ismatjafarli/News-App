@@ -1,18 +1,18 @@
 package com.example.newsapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newsapp.R;
-import com.example.newsapp.databinding.FragmentBusinessNewsBinding;
-import com.example.newsapp.databinding.RowNewsBinding;
+import com.example.newsapp.activity.WebActivity;
+import com.example.newsapp.databinding.NewsCardBinding;
 import com.example.newsapp.model.Article;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class TechNewsAdapter extends RecyclerView.Adapter<TechNewsAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        RowNewsBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.row_news, parent, false);
+        NewsCardBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.news_card, parent, false);
         ViewHolder viewHolder = new ViewHolder(binding);
         return viewHolder;
     }
@@ -39,6 +39,17 @@ public class TechNewsAdapter extends RecyclerView.Adapter<TechNewsAdapter.ViewHo
         Article article = articles.get(position);
         holder.rowNewsBinding.setData(article);
 
+        holder.rowNewsBinding.newsCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, WebActivity.class);
+                intent.putExtra("url", article.getUrl());
+                intent.putExtra("check", "fromTechNews");
+                context.startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -47,9 +58,9 @@ public class TechNewsAdapter extends RecyclerView.Adapter<TechNewsAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        RowNewsBinding rowNewsBinding;
+        NewsCardBinding rowNewsBinding;
 
-        public ViewHolder(@NonNull RowNewsBinding binding) {
+        public ViewHolder(@NonNull NewsCardBinding binding) {
             super(binding.getRoot());
             this.rowNewsBinding = binding;
         }
