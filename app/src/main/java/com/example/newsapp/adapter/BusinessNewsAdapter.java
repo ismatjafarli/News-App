@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -13,9 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newsapp.R;
 import com.example.newsapp.activity.WebActivity;
-import com.example.newsapp.databinding.RowNewsBinding;
+import com.example.newsapp.databinding.NewsCardBinding;
 import com.example.newsapp.model.Article;
-import com.example.newsapp.view.BusinessNewsRepository;
 
 import java.util.List;
 
@@ -31,7 +29,7 @@ public class BusinessNewsAdapter extends RecyclerView.Adapter<BusinessNewsAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        RowNewsBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.row_news, parent, false);
+        NewsCardBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.news_card, parent, false);
         ViewHolder viewHolder = new ViewHolder(binding);
 
         return viewHolder;
@@ -59,9 +57,9 @@ public class BusinessNewsAdapter extends RecyclerView.Adapter<BusinessNewsAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        RowNewsBinding rowNewsBinding;
+        NewsCardBinding rowNewsBinding;
 
-        public ViewHolder(@NonNull RowNewsBinding binding) {
+        public ViewHolder(@NonNull NewsCardBinding binding) {
             super(binding.getRoot());
             this.rowNewsBinding = binding;
         }

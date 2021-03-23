@@ -18,7 +18,6 @@ import android.widget.TableLayout;
 import com.example.newsapp.R;
 import com.example.newsapp.adapter.PagerAdapter;
 import com.example.newsapp.databinding.ActivityMainBinding;
-import com.example.newsapp.databinding.ContentMainBinding;
 import com.example.newsapp.fragmnet.ArticlesFragment;
 import com.example.newsapp.fragmnet.BusinessNewsFragment;
 import com.example.newsapp.fragmnet.TechNewsFragment;
@@ -39,12 +38,15 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         drawer = binding.drawerLayout;
         toolbar = binding.toolbar;
-        setSupportActionBar(toolbar);
+
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        toggle.getDrawerArrowDrawable().setColor(getColor(R.color.toggle));
         toggle.syncState();
+
+
 
 
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), binding.tabLayout.getTabCount());

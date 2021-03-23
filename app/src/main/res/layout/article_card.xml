@@ -15,7 +15,7 @@
         android:id="@+id/article_card"
         android:layout_width="match_parent"
         android:layout_height="210dp"
-        android:backgroundTint="#F6F6F6"
+        android:backgroundTint="#FBFBFB"
         android:layout_margin="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
