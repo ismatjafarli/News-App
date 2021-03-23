@@ -12,6 +12,7 @@ import com.example.newsapp.databinding.ActivityWebBinding;
 public class WebActivity extends AppCompatActivity {
     ActivityWebBinding binding;
     String url;
+    String check = null;
 
 
     @Override
@@ -23,6 +24,16 @@ public class WebActivity extends AppCompatActivity {
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
         binding.activityWeb.loadUrl(url);
+
+        check = intent.getStringExtra("check");
+        if(check.equals("fromArticles")) {
+            binding.textViewToolbar.setText("Articles");
+        } else if(check.equals("fromBusinessNews")) {
+            binding.textViewToolbar.setText("Business News");
+        } else{
+            binding.textViewToolbar.setText("Tech News");
+        }
+
 
     }
 }

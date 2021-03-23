@@ -45,6 +45,7 @@ public class BusinessNewsAdapter extends RecyclerView.Adapter<BusinessNewsAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(context, WebActivity.class);
                 intent.putExtra("url", article.getUrl());
+                intent.putExtra("check", "fromBusinessNews");
                 context.startActivity(intent);
             }
         });
