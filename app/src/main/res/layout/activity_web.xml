@@ -10,7 +10,8 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:backgroundTint="#C50505">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_web_view"
@@ -26,36 +27,30 @@
                     android:textColor="#FBFBFB"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
-
             </androidx.appcompat.widget.Toolbar>
 
             <ProgressBar
-                android:id="@+id/progressBar3"
+                android:id="@+id/progress_web_view"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:indeterminate="true" />
-
+                android:layout_height="3dp"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestedsv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="false"
+                    android:fitsSystemWindows="true"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nestedsv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="false"
-            android:fitsSystemWindows="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <WebView
-                android:id="@+id/activity_web"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".activity.WebActivity"/>
+                    <WebView
+                        android:id="@+id/activity_web"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:context=".activity.WebActivity"/>
 
-        </androidx.core.widget.NestedScrollView>
-
-
+                </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 </layout>
