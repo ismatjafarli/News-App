@@ -10,16 +10,10 @@
         tools:context=".activity.MainActivity"
         android:fitsSystemWindows="true">
 
-
-
-
-
-        <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-
 
 
         <androidx.appcompat.widget.Toolbar
@@ -40,7 +34,6 @@
                 android:textColor="#FBFBFB"
                 android:textSize="24sp"
                 android:textStyle="bold" />
-
         </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
@@ -90,7 +83,5 @@
             android:layout_gravity="start"
             app:itemTextAppearance="@style/TextAppearance.AppCompat.Large"
             app:menu="@menu/drawer_menu"/>
-
     </androidx.drawerlayout.widget.DrawerLayout>
-
 </layout>

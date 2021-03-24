@@ -18,7 +18,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_scrollFlags="scroll|enterAlways"
-                android:background="#C50505">
+                android:background="#C50505"
+                app:menu="@menu/options_menu">
 
                 <TextView
                     android:id="@+id/text_view_toolbar"
@@ -48,7 +49,7 @@
                     <WebView
                         android:id="@+id/activity_web"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         tools:context=".activity.WebActivity"/>
 
                 </androidx.core.widget.NestedScrollView>

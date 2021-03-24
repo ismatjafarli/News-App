@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         drawer = binding.drawerLayout;
         toolbar = binding.toolbar;
 
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.getDrawerArrowDrawable().setColor(getColor(R.color.toggle));

@@ -1,5 +1,6 @@
 package com.example.newsapp.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -7,10 +8,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.example.newsapp.R;
 import com.example.newsapp.databinding.ActivityWebBinding;
@@ -26,6 +31,10 @@ public class WebActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_web);
+        setSupportActionBar(binding.toolbarWebView);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
@@ -76,5 +85,39 @@ public class WebActivity extends AppCompatActivity {
         } else  {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.share_item:
+                shareText();
+                return true;
+            case R.id.add_my_news_item:
+                Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
+                return true;
+            case android.R.id.home:
+                 this.finish();
+                 return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void shareText() {
+        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        String shareBodyText = url;
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject/Title");
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
+        startActivity(Intent.createChooser(intent, "Share with"));
     }
 }
