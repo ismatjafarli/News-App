@@ -45,6 +45,7 @@ public class TechNewsAdapter extends RecyclerView.Adapter<TechNewsAdapter.ViewHo
                 Intent intent = new Intent(context, WebActivity.class);
                 intent.putExtra("url", article.getUrl());
                 intent.putExtra("check", "fromTechNews");
+                intent.putExtra("title", article.getTitle());
                 context.startActivity(intent);
             }
         });

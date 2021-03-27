@@ -11,7 +11,7 @@
 
     <item
         android:id="@+id/add_my_news_item"
-        android:title="Share" />
+        android:title="Add to my list" />
 
 
 </menu>
