@@ -29,7 +29,7 @@ public class ArticlesRepository {
         call.enqueue(new Callback<Root>() {
             @Override
             public void onResponse(Call<Root> call, Response<Root> response) {
-                Log.d(TAG, "onResponse: " + response.body().getArticles().get(0).getUrlToImage());
+                Log.d(TAG, "onResponse: " + response.body());
                 if (!response.isSuccessful()) {
                     return;
                 }

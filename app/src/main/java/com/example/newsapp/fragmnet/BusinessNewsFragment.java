@@ -56,6 +56,7 @@ public class BusinessNewsFragment extends Fragment {
                 Log.d("Testing", "onChanged: " + root.getStatus());
                 BusinessNewsAdapter businessNewsAdapter = new BusinessNewsAdapter(root.getArticles(), getContext());
                 binding.recyclerViewBusiness.setAdapter(businessNewsAdapter);
+                binding.progressMain.setVisibility(View.INVISIBLE);
 
             }
         });

@@ -29,7 +29,7 @@ public class TechNewsRepository {
         call.enqueue(new Callback<Root>() {
             @Override
             public void onResponse(Call<Root> call, Response<Root> response) {
-//                Log.d(TAG, "onCreate: " + response.body().getArticles().get(1).getContent().toString());
+            Log.d(TAG, "onCreate: " + response.body());
                 if (!response.isSuccessful()) {
                     return;
                 }

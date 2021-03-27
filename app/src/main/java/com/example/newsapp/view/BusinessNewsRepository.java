@@ -30,6 +30,7 @@ public class BusinessNewsRepository {
 
             @Override
             public void onResponse(Call<Root> call, Response<Root> response) {
+                Log.d(TAG, "onResponse: "+response.body());
                 if (!response.isSuccessful()) {
                     return;
                 }
