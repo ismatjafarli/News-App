@@ -23,12 +23,15 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
     private List<News> newsList;
     private OnItemClickListener listener;
 
+
+    public BookmarkAdapter() {
+    }
+
     public BookmarkAdapter(Context context, List<News> newsList, OnItemClickListener listener) {
         this.context = context;
         this.newsList = newsList;
         this.listener = listener;
     }
-
 
 
     @NonNull
@@ -48,6 +51,14 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
     @Override
     public int getItemCount() {
         return newsList.size();
+    }
+
+    public News getNewsAt(int position) {
+        return newsList.get(position);
+    }
+
+    public  List<News> getAllNews() {
+        return newsList;
     }
 
 

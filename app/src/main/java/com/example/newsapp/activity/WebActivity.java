@@ -3,14 +3,12 @@ package com.example.newsapp.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,33 +19,28 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.example.newsapp.R;
+import com.example.newsapp.adapter.BookmarkAdapter;
 import com.example.newsapp.databinding.ActivityWebBinding;
 import com.example.newsapp.model.News;
-import com.example.newsapp.view.BusinessNewsViewModel;
-import com.example.newsapp.view.NewsViewModel;
-
-import java.util.List;
+import com.example.newsapp.view.BookmarkViewModel;
 
 public class WebActivity extends AppCompatActivity {
-    ActivityWebBinding binding;
-    String url;
-    String check = "News";
-    String title = null;
-    private NewsViewModel newsViewModel;
+    private ActivityWebBinding binding;
+    private String url;
+    private String check = "News";
+    private String title = null;
+    private BookmarkViewModel newsViewModel;
+    private BookmarkAdapter bookmarkAdapter = new BookmarkAdapter();
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_web);
-
-        setBackButton();
-
-
-        Intent intent = getIntent();
+        intent = getIntent();
         url = intent.getStringExtra("url");
         title = intent.getStringExtra("title");
-
 
         binding.activityWeb.setWebChromeClient( new MyWebChromeClient());
         binding.activityWeb.setWebViewClient( new WebClient());
@@ -56,6 +49,14 @@ public class WebActivity extends AppCompatActivity {
         binding.activityWeb.getSettings().setJavaScriptEnabled(true);
         binding.activityWeb.loadUrl(url);
 
+        newsViewModel = ViewModelProviders.of(this).get(BookmarkViewModel.class);
+
+        setBackButton();
+        setToolbarTitle();
+
+    }
+
+    private void setToolbarTitle() {
         check = intent.getStringExtra("check");
 
         if(check == null){
@@ -69,11 +70,6 @@ public class WebActivity extends AppCompatActivity {
                 binding.textViewToolbar.setText("Tech News");
             }
         }
-
-
-
-
-
     }
 
     private void setBackButton() {
@@ -91,7 +87,6 @@ public class WebActivity extends AppCompatActivity {
     }
 
     public class WebClient extends WebViewClient {
-
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
@@ -124,7 +119,6 @@ public class WebActivity extends AppCompatActivity {
                 return true;
             case R.id.add_my_news_item:
                 addToMyList();
-//                Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
                 return true;
             case android.R.id.home:
                  this.finish();
@@ -144,8 +138,23 @@ public class WebActivity extends AppCompatActivity {
     }
 
     private void addToMyList() {
-        News news = new News(title, url);
-        NewsViewModel.insert(news);
+//        List<News> newsList = bookmarkAdapter.getAllNews();
+//        int flag = 0;
+//
+//        for(int i = 0; i <= newsList.size(); i ++) {
+//            if(newsList.get(i).getUrl().equals(url)){
+//                flag = 1;
+//            }
+//        }
+//
+//        if(flag == 1) {
+//            Toast.makeText(this, "same", Toast.LENGTH_SHORT).show();
+//        }else {
+            News newNews = new News(title, url);
+            newsViewModel.insert(newNews);
+            Toast.makeText(WebActivity.this, "Bookmarked!", Toast.LENGTH_SHORT).show();
+//        }
+
     }
 
 }

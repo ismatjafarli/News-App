@@ -35,7 +35,7 @@ public class NewsRepository {
         NewsRoomDatabase.databaseWriteExecutor.execute(() -> newsDao.deleteAll());
     }
 
-    public void delete(News contact) {
-        NewsRoomDatabase.databaseWriteExecutor.execute(() -> newsDao.delete(contact));
+    public void delete(News news) {
+        NewsRoomDatabase.databaseWriteExecutor.execute(() -> newsDao.delete(news));
     }
 }

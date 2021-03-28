@@ -11,22 +11,22 @@ import com.example.newsapp.model.News;
 
 import java.util.List;
 
-public class NewsViewModel extends AndroidViewModel {
+public class BookmarkViewModel extends AndroidViewModel {
     public static NewsRepository repository;
     public final LiveData<List<News>> allNews;
 
 
-    public NewsViewModel(@NonNull Application application) {
+    public BookmarkViewModel(@NonNull Application application) {
         super(application);
         repository = new NewsRepository(application);
         allNews = repository.getAllData();
     }
 
     public LiveData<List<News>> getAllNews() {return allNews; }
-    public static void insert(News news) {repository.insert(news);}
+    public void insert(News news) {repository.insert(news);}
     public LiveData<News> get(int id) {return repository.get(id);}
-    public  void delete(News news) {repository.delete(news);}
-    public  void deleteAll() {repository.deleteAll();}
+    public void delete(News news) {repository.delete(news);}
+    public void deleteAll() {repository.deleteAll();}
 
 
 }
