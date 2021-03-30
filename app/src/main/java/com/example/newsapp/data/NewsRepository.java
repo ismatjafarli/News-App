@@ -9,6 +9,7 @@ import com.example.newsapp.util.NewsRoomDatabase;
 
 import java.util.List;
 
+
 public class NewsRepository {
     private NewsDao newsDao;
     private LiveData<List<News>> allNews;
@@ -20,6 +21,9 @@ public class NewsRepository {
     }
 
     public LiveData<List<News>> getAllData() { return allNews; }
+    public List<News> getNews() {
+        return newsDao.getNews();
+    }
 
     public void insert(News news) {
         NewsRoomDatabase.databaseWriteExecutor.execute(() ->{

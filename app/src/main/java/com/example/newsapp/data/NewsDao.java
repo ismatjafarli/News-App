@@ -22,6 +22,9 @@ public interface NewsDao {
     @Query("SELECT * FROM news_table")
     LiveData<List<News>> getAllNews();
 
+    @Query("SELECT * FROM news_table")
+   List<News> getNews();
+
     @Query("SELECT * FROM news_table WHERE news_table.id == :id")
     LiveData<News> get(int id);
 

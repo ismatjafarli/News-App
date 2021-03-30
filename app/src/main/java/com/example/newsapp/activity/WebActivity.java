@@ -10,6 +10,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -145,28 +148,38 @@ public class WebActivity extends AppCompatActivity {
     private void addToMyList() {
 
         newsViewModel = ViewModelProviders.of(this).get(BookmarkViewModel.class);
-        newsViewModel.getAllNews().observe(this, new Observer<List<News>>() {
-            @Override
-            public void onChanged(List<News> news) {
-                int flag = 0;
-                for(int i = 0; i < news.size(); i++) {
-                    if(Objects.equals(news.get(i).getUrl(), url)) {
-                        flag = 1;
-                        break;
-                    }
-                }
 
-                if(flag == 1) {
-                    Toast.makeText(WebActivity.this, "This news is already added!", Toast.LENGTH_SHORT).show();
-                } else {
-                    News newNews = new News(title, url);
-                    newsViewModel.insert(newNews);
-                    Toast.makeText(WebActivity.this, "Bookmarked!", Toast.LENGTH_LONG).show();
+        new Thread( new Runnable() { @Override public void run() {
+
+            int flag = 0;
+            for(int i = 0; i < newsViewModel.getNews().size(); i++) {
+                if(Objects.equals(newsViewModel.getNews().get(i).getUrl(), url)) {
+                    flag = 1;
+                    break;
                 }
             }
-        });
+            if(flag == 1) {
+                showToast("This news is already added!");
+
+            } else {
+                News newNews = new News(title, url);
+                newsViewModel.insert(newNews);
+                showToast("Bookmarked!");
+            }
+
+        } } ).start();
 
     }
+
+    private void showToast(String str) {
+        Log.d("testing", "first: ");
+        new Handler(Looper.getMainLooper()).post(() -> {
+            Log.d("testing", "second: ");
+            Toast.makeText(WebActivity.this, str, Toast.LENGTH_SHORT).show();
+        });
+
+
+          }
 
 }
 

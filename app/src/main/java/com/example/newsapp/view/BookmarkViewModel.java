@@ -22,7 +22,8 @@ public class BookmarkViewModel extends AndroidViewModel {
         allNews = repository.getAllData();
     }
 
-    public LiveData<List<News>> getAllNews() {return allNews; }
+    public LiveData<List<News>> getAllNews() {return allNews;}
+    public List<News> getNews() { return repository.getNews();}
     public void insert(News news) {repository.insert(news);}
     public LiveData<News> get(int id) {return repository.get(id);}
     public void delete(News news) {repository.delete(news);}
