@@ -3,12 +3,14 @@ package com.example.newsapp.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,13 +26,16 @@ import com.example.newsapp.databinding.ActivityWebBinding;
 import com.example.newsapp.model.News;
 import com.example.newsapp.view.BookmarkViewModel;
 
+import java.util.List;
+import java.util.Objects;
+
 public class WebActivity extends AppCompatActivity {
     private ActivityWebBinding binding;
     private String url;
     private String check = "News";
     private String title = null;
     private BookmarkViewModel newsViewModel;
-    private BookmarkAdapter bookmarkAdapter = new BookmarkAdapter();
+    private BookmarkAdapter bookmarkAdapter;
     private Intent intent;
 
     @Override
@@ -49,7 +54,7 @@ public class WebActivity extends AppCompatActivity {
         binding.activityWeb.getSettings().setJavaScriptEnabled(true);
         binding.activityWeb.loadUrl(url);
 
-        newsViewModel = ViewModelProviders.of(this).get(BookmarkViewModel.class);
+
 
         setBackButton();
         setToolbarTitle();
@@ -138,22 +143,28 @@ public class WebActivity extends AppCompatActivity {
     }
 
     private void addToMyList() {
-//        List<News> newsList = bookmarkAdapter.getAllNews();
-//        int flag = 0;
-//
-//        for(int i = 0; i <= newsList.size(); i ++) {
-//            if(newsList.get(i).getUrl().equals(url)){
-//                flag = 1;
-//            }
-//        }
-//
-//        if(flag == 1) {
-//            Toast.makeText(this, "same", Toast.LENGTH_SHORT).show();
-//        }else {
-            News newNews = new News(title, url);
-            newsViewModel.insert(newNews);
-            Toast.makeText(WebActivity.this, "Bookmarked!", Toast.LENGTH_SHORT).show();
-//        }
+
+        newsViewModel = ViewModelProviders.of(this).get(BookmarkViewModel.class);
+        newsViewModel.getAllNews().observe(this, new Observer<List<News>>() {
+            @Override
+            public void onChanged(List<News> news) {
+                int flag = 0;
+                for(int i = 0; i < news.size(); i++) {
+                    if(Objects.equals(news.get(i).getUrl(), url)) {
+                        flag = 1;
+                        break;
+                    }
+                }
+
+                if(flag == 1) {
+                    Toast.makeText(WebActivity.this, "This news is already added!", Toast.LENGTH_SHORT).show();
+                } else {
+                    News newNews = new News(title, url);
+                    newsViewModel.insert(newNews);
+                    Toast.makeText(WebActivity.this, "Bookmarked!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
     }
 

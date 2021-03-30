@@ -27,7 +27,9 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
     public BookmarkAdapter() {
     }
 
-    public BookmarkAdapter(Context context, List<News> newsList, OnItemClickListener listener) {
+    public BookmarkAdapter(Context context,
+                           List<News> newsList,
+                           OnItemClickListener listener) {
         this.context = context;
         this.newsList = newsList;
         this.listener = listener;
