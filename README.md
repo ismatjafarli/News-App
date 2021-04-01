@@ -3,7 +3,7 @@
 ## Introduction
 The goal is to create a News app which gives a user regularly-updated news and articles from the internet related to a particular topic.
 
-The application uses combined MVVM and Clean Architecture and Repository patterns. Besides, ROOM database has implemented to store data in local storage from the internet.
+The application uses combined MVVM and Clean Architecture and Repository patterns. Besides, ROOM database has been implemented to store data in local storage from the internet.
 - ViewModel, LiveData
 - Retrofit
 - Data Binding
