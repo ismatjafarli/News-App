@@ -23,6 +23,9 @@ The application uses combined MVVM and Clean Architecture and Repository pattern
 - Swipe right or left to delete from your list
 - Delete all news/articles
 
+## Demo
+![NewsApp](https://user-images.githubusercontent.com/77526610/113295272-0d2d6680-9309-11eb-8227-4cdd44bd1be0.gif)
+
 ## Libraries
 - [Retrofit](https://square.github.io/retrofit/)
 - [Android architecture components](https://developer.android.com/topic/libraries/architecture/index.html)
