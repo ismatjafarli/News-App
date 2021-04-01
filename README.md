@@ -1,5 +1,5 @@
 # News App
-The goal is to create a News app which gives a user regularly-updated news and articles from the internet related to a particular topic.
+Android app which gives a user regularly-updated news and articles from the internet related to a particular topic.
 
 ## Description
 
