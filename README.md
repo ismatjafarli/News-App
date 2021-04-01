@@ -26,7 +26,7 @@ The application uses combined MVVM and Clean Architecture and Repository pattern
 ## Libraries
 - [Retrofit](https://square.github.io/retrofit/)
 - [Android architecture components](https://developer.android.com/topic/libraries/architecture/index.html)
-- [ROOM Database](https://developer.android.com/training/data-storage/room)
+- [ROOM Database](https://developer.android.com/jetpack/androidx/releases/room)
 - [Picasso](https://square.github.io/picasso/)
 
 
