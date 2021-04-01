@@ -23,4 +23,11 @@ The application uses combined MVVM and Clean Architecture and Repository pattern
 - Swipe right or left to delete from your list
 - Delete all news/articles
 
+## Libraries
+- [Retrofit](https://square.github.io/retrofit/)
+- [Android architecture components](https://developer.android.com/topic/libraries/architecture/index.html)
+- [ROOM Database](https://developer.android.com/training/data-storage/room)
+- [Picasso](https://square.github.io/picasso/)
+
+
 
