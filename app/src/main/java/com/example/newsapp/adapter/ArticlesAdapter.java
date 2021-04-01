@@ -46,6 +46,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
                 Intent intent = new Intent(context, WebActivity.class);
                 intent.putExtra("url", article.getUrl());
                 intent.putExtra("check", "fromArticles");
+                intent.putExtra("title", article.getTitle());
                 context.startActivity(intent);
             }
         });

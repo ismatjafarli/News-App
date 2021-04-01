@@ -4,9 +4,9 @@
     tools:showIn="navigation_view">
 
     <group
-        android:checkableBehavior="single">
+        android:checkableBehavior="none">
         <item
-            android:id="@+id/nav_profile"
+            android:id="@+id/nav_news_list"
             android:title="My news/articles" />
     </group>
 

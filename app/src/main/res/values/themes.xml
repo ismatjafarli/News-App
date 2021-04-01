@@ -24,6 +24,11 @@
 
     </style>
 
+    <style name="NavigationDrawer">
+        <item name="android:textColor">@color/purple_700</item>
+
+    </style>
+
 
 
 </resources>

@@ -8,15 +8,17 @@
         android:allowBackup="true"
         android:icon="@mipmap/newsicon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/newsicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsApp"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".activity.WebActivity"
+        <activity android:name=".activity.BookmarkActivity"
             android:theme="@style/Theme.NewsApp.NoActionBar">
         </activity>
-
+        <activity
+            android:name=".activity.WebActivity"
+            android:theme="@style/Theme.NewsApp.NoActionBar">
+        </activity>
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/Theme.NewsApp.NoActionBar">
@@ -27,6 +29,9 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
