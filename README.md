@@ -17,10 +17,10 @@ The application uses combined MVVM and Clean Architecture and Repository pattern
 - ProgressBar
 
 ## Features
--Read up-to-date news/articles
--Share the link of the news/article
--Add to your list if you want to read one at the later time
--Swipe right or left to delete from your list
--Delete all news/articles
+- Read up-to-date news/articles
+- Share the link of the news/article
+- Add to your list if you want to read one at the later time
+- Swipe right or left to delete from your list
+- Delete all news/articles
 
 
