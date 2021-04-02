@@ -49,8 +49,6 @@ public class TechNewsAdapter extends RecyclerView.Adapter<TechNewsAdapter.ViewHo
                 context.startActivity(intent);
             }
         });
-
-
     }
 
     @Override

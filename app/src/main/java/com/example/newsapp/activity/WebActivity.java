@@ -35,10 +35,8 @@ import java.util.Objects;
 public class WebActivity extends AppCompatActivity {
     private ActivityWebBinding binding;
     private String url;
-    private String check = "News";
     private String title = null;
     private BookmarkViewModel newsViewModel;
-    private BookmarkAdapter bookmarkAdapter;
     private Intent intent;
 
     @Override
@@ -57,15 +55,13 @@ public class WebActivity extends AppCompatActivity {
         binding.activityWeb.getSettings().setJavaScriptEnabled(true);
         binding.activityWeb.loadUrl(url);
 
-
-
         setBackButton();
         setToolbarTitle();
 
     }
 
     private void setToolbarTitle() {
-        check = intent.getStringExtra("check");
+        String check = intent.getStringExtra("check");
 
         if(check == null){
             binding.textViewToolbar.setText("My news/articles");
@@ -137,38 +133,36 @@ public class WebActivity extends AppCompatActivity {
     }
 
     private void shareText() {
-        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         String shareBodyText = url;
-        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject/Title");
-        intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "From News App");
+        intent.putExtra(Intent.EXTRA_TEXT, shareBodyText);
         startActivity(Intent.createChooser(intent, "Share with"));
     }
 
     private void addToMyList() {
-
         newsViewModel = ViewModelProviders.of(this).get(BookmarkViewModel.class);
 
-        new Thread( new Runnable() { @Override public void run() {
-
-            int flag = 0;
-            for(int i = 0; i < newsViewModel.getNews().size(); i++) {
-                if(Objects.equals(newsViewModel.getNews().get(i).getUrl(), url)) {
-                    flag = 1;
-                    break;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int flag = 0;
+                for(int i = 0; i < newsViewModel.getNews().size(); i++) {
+                    if(Objects.equals(newsViewModel.getNews().get(i).getUrl(), url)) {
+                        flag = 1;
+                        break;
+                    }
+                }
+                if(flag == 1) {
+                    showToast("This news is already added!");
+                } else {
+                    News newNews = new News(title, url);
+                    newsViewModel.insert(newNews);
+                    showToast("Bookmarked!");
                 }
             }
-            if(flag == 1) {
-                showToast("This news is already added!");
-
-            } else {
-                News newNews = new News(title, url);
-                newsViewModel.insert(newNews);
-                showToast("Bookmarked!");
-            }
-
-        } } ).start();
-
+        } ).start();
     }
 
     private void showToast(String str) {
@@ -177,9 +171,7 @@ public class WebActivity extends AppCompatActivity {
             Log.d("testing", "second: ");
             Toast.makeText(WebActivity.this, str, Toast.LENGTH_SHORT).show();
         });
-
-
-          }
+    }
 
 }
 

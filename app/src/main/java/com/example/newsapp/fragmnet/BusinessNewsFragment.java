@@ -35,8 +35,7 @@ public class BusinessNewsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        binding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_business_news, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_business_news, container, false);
         View view = binding.getRoot();
         getBusinessNews();
 
@@ -61,4 +60,5 @@ public class BusinessNewsFragment extends Fragment {
             }
         });
     }
+
 }

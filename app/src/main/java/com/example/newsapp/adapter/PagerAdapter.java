@@ -20,7 +20,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
         this.totalTabs = totalTabs;
     }
 
-
     @NonNull
     @Override
     public Fragment getItem(int position) {

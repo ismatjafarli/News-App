@@ -31,9 +31,9 @@ public class ArticlesFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_articles, container,false);
         View view = binding.getRoot();
-
         getArticles();
 
         return view;
@@ -52,8 +52,6 @@ public class ArticlesFragment extends Fragment{
                 binding.recyclerViewArticles.setAdapter(articlesAdapter);
             }
         });
-
-
     }
 
 }
