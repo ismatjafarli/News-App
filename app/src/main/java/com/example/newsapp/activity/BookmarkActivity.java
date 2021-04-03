@@ -47,7 +47,7 @@ public class BookmarkActivity extends AppCompatActivity implements BookmarkAdapt
             public void onChanged(List<News> news) {
                 bookmarkAdapter = new BookmarkAdapter(BookmarkActivity.this, news, BookmarkActivity.this);
                 binding.recyclerViewBookmark.setAdapter(bookmarkAdapter);
-//                Log.d("Testing", "onChangedROOMTiitle: " + news.get(0).getTitle());
+//                Log.d("Testing", "onChangedROOMTitle: " + news.get(0).getTitle());
 //                Log.d("Testing", "onChangedROOMUrl: " +news.get(0).getUrl());
             }
         });

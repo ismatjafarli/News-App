@@ -8,7 +8,6 @@ public class Source {
     public String name;
 
 
-
     public String getId() {
         return id;
     }

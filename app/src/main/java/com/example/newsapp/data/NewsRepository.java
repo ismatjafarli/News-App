@@ -21,6 +21,7 @@ public class NewsRepository {
     }
 
     public LiveData<List<News>> getAllData() { return allNews; }
+
     public List<News> getNews() {
         return newsDao.getNews();
     }

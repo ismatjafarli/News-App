@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         setAdapter();
         setNavigationDrawer();
 
-
     }
 
     private void setAdapter() {
@@ -89,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, BookmarkActivity.class);
                         startActivity(intent);
                         break;
-
                 }
                 return true;
             }

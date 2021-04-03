@@ -23,7 +23,6 @@ public class  Article {
     public String content;
 
 
-
     public Source getSource() {
         return source;
     }

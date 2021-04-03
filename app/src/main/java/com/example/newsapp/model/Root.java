@@ -11,8 +11,6 @@ public class Root {
     public List<Article> articles;
 
 
-
-
     public String getStatus() {
         return status;
     }

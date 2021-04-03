@@ -15,7 +15,6 @@ public class BookmarkViewModel extends AndroidViewModel {
     public static NewsRepository repository;
     public final LiveData<List<News>> allNews;
 
-
     public BookmarkViewModel(@NonNull Application application) {
         super(application);
         repository = new NewsRepository(application);
