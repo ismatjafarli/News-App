@@ -12,6 +12,7 @@ The application uses combined MVVM and Clean Architecture and Repository pattern
 - Fragments
 - TabLayout, ViewPager
 - RecyclerView
+- WebView
 - CardView
 - Intent
 - ProgressBar
